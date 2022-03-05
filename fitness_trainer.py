@@ -22,7 +22,8 @@ while True:
             img_height, img_width, channel = img.shape
             x, y = int(lm.x * img_width), int(lm.y * img_height)
             lm_list.append([id, x, y])
-            print(lm_list)
+            # print(lm_list)
+        mp_draw.draw_landmarks(img, result.pose_landmarks, mp_pose.POSE_CONNECTIONS)
 
     cv2.imshow("Image", img)
     cv2.waitKey(1)
