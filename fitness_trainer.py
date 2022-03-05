@@ -14,7 +14,15 @@ while True:
 
     img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
     result = pose.process(img_rgb)
-    print(result.pose_landmarks)
+    # print(result.pose_landmarks)
+    if result.pose_landmarks:
+        lm_list = []
+        for id, lm in enumerate(result.pose_landmarks.landmark):
+            # print(id, lm)
+            img_height, img_width, channel = img.shape
+            x, y = int(lm.x * img_width), int(lm.y * img_height)
+            lm_list.append([id, x, y])
+            print(lm_list)
 
     cv2.imshow("Image", img)
     cv2.waitKey(1)
