@@ -1,4 +1,5 @@
 import cv2
+import math
 
 def get_angle(id_list,image, p1, p2, p3, draw=True):
     if len(id_list) > 18:
@@ -7,15 +8,42 @@ def get_angle(id_list,image, p1, p2, p3, draw=True):
         x3, y3 = id_list[p3][1:]
 
         if draw:
+
+            # Circle
             cv2.circle(
-                image, (x1, y1), 2,
-                (0, 0 ,255), 3
+                image, (x1, y1), 7,
+                (0, 0 ,255), 1
             )
             cv2.circle(
-                image, (x2, y2), 2,
-                (0, 0, 255), 3
+                image, (x1, y1), 3,
+                (0, 0, 255), cv2.FILLED
             )
             cv2.circle(
-                image, (x3, y3), 2,
-                (0, 0, 255), 3
+                image, (x2, y2), 7,
+                (0, 0, 255), 1
             )
+            cv2.circle(
+                image, (x2, y2), 3,
+                (0, 0, 255), cv2.FILLED
+            )
+            cv2.circle(
+                image, (x3, y3), 7,
+                (0, 0, 255), 1
+            )
+            cv2.circle(
+                image, (x3, y3), 3,
+                (0, 0, 255), cv2.FILLED
+            )
+
+            # Line
+            cv2.line(
+                image, (x1, y1), (x2, y2),
+                (255, 255, 255), 2
+            )
+            cv2.line(
+                image, (x3, y3), (x2, y2),
+                (255, 255, 255), 2
+            )
+
+            # Angle
+            
