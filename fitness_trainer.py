@@ -1,6 +1,8 @@
 import cv2
 import mediapipe as mp
 import time
+from find_angle import get_angle
+import numpy as np
 
 cap = cv2.VideoCapture('fitness videos/1.mp4')
 
@@ -25,7 +27,29 @@ while True:
             x, y = int(lm.x * img_width), int(lm.y * img_height)
             lm_list.append([id, x, y])
             # print(lm_list)
-        mp_draw.draw_landmarks(img, result.pose_landmarks, mp_pose.POSE_CONNECTIONS)
+            angle = get_angle(id_list=lm_list, image=img,
+                              p1=11, p2=13, p3=15)
+            # Percentage
+            percent = np.interp(angle, (200, 330), (0, 100))
+            if percent > 0:
+                percent = percent
+            else:
+                percent = 0
+
+            bar = np.interp(angle, (200, 330), (400, 150))
+            if bar > 0:
+                bar = bar
+            else:
+                bar = 400
+
+            # Bar
+            cv2.rectangle(img, (20, 150), (55, 400), (0, 255, 0), 3)
+            cv2.rectangle(img, (20, int(bar)), (55, 400), (0, 255, 0), cv2.FILLED)
+            cv2.putText(
+                img, f'{int(percent)} %', (10, 450),
+                cv2.FONT_HERSHEY_PLAIN, 1.5,
+                (255, 255, 0), 2
+            )
 
     c_time = time.time()
     fps = 1 / (c_time - p_time)
