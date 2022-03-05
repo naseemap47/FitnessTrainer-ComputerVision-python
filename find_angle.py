@@ -15,7 +15,6 @@ def get_angle(id_list,image, p1, p2, p3, draw=True, draw_angle=True):
             angle = 360 + angle
         elif angle > 360:
             angle = angle - 360
-        print(angle)
 
         if draw:
 
