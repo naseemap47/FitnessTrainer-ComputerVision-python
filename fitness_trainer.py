@@ -8,6 +8,8 @@ mp_pose = mp.solutions.pose
 pose = mp_pose.Pose()
 mp_draw = mp.solutions.drawing_utils
 
+p_time = 0
+
 while True:
     success, img = cap.read()
     img = cv2.resize(img, (740, 480))
@@ -24,6 +26,15 @@ while True:
             lm_list.append([id, x, y])
             # print(lm_list)
         mp_draw.draw_landmarks(img, result.pose_landmarks, mp_pose.POSE_CONNECTIONS)
+
+    c_time = time.time()
+    fps = 1 / (c_time - p_time)
+    p_time = c_time
+    cv2.putText(
+        img, f'FPS: {int(fps)}', (10, 70),
+        cv2.FONT_HERSHEY_PLAIN, 2,
+        (255, 0, 255), 2
+    )
 
     cv2.imshow("Image", img)
     cv2.waitKey(1)
