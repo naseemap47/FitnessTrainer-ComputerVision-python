@@ -1,6 +1,7 @@
 import cv2
 import mediapipe as mp
 import time
+from find_angle import get_angle
 
 cap = cv2.VideoCapture('fitness videos/1.mp4')
 
@@ -25,7 +26,9 @@ while True:
             x, y = int(lm.x * img_width), int(lm.y * img_height)
             lm_list.append([id, x, y])
             # print(lm_list)
-        mp_draw.draw_landmarks(img, result.pose_landmarks, mp_pose.POSE_CONNECTIONS)
+            get_angle(id_list=lm_list, image=img,
+                       p1=11, p2=13, p3=15)
+        # mp_draw.draw_landmarks(img, result.pose_landmarks, mp_pose.POSE_CONNECTIONS)
 
     c_time = time.time()
     fps = 1 / (c_time - p_time)
