@@ -11,6 +11,8 @@ pose = mp_pose.Pose()
 mp_draw = mp.solutions.drawing_utils
 
 p_time = 0
+dir = 0
+count = 0
 
 while True:
     success, img = cap.read()
@@ -50,6 +52,17 @@ while True:
                 cv2.FONT_HERSHEY_PLAIN, 1.5,
                 (255, 255, 0), 2
             )
+
+            # Count
+            if percent == 100:
+                if dir == 0:
+                    count += (1 / 9)
+                    dir = 1
+            if percent == 0:
+                if dir ==1:
+                    count += (1 / 9)
+                    dir = 0
+            print(count/2)
 
     c_time = time.time()
     fps = 1 / (c_time - p_time)
