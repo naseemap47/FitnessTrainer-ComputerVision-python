@@ -74,6 +74,11 @@ while True:
                 cv2.FONT_HERSHEY_PLAIN, 3,
                 (255, 255, 255), 3
             )
+            cv2.putText(
+                img, 'Count:', (650, 48),
+                cv2.FONT_HERSHEY_PLAIN, 1,
+                (255, 255, 255), 1
+            )
 
     c_time = time.time()
     fps = 1 / (c_time - p_time)
