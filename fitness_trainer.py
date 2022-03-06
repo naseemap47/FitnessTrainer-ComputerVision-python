@@ -70,7 +70,7 @@ while True:
                 (0, 0, 0), cv2.FILLED
             )
             cv2.putText(
-                img, str(int(count)), (650, 90),
+                img, str(int(count/2)), (650, 90),
                 cv2.FONT_HERSHEY_PLAIN, 3,
                 (255, 255, 255), 3
             )
