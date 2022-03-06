@@ -62,7 +62,18 @@ while True:
                 if dir ==1:
                     count += (1 / 9)
                     dir = 0
-            print(count/2)
+            # print(count/2)
+
+            # Display Count
+            cv2.rectangle(
+                img, (630, 30), (735, 100),
+                (0, 0, 0), cv2.FILLED
+            )
+            cv2.putText(
+                img, str(int(count)), (650, 90),
+                cv2.FONT_HERSHEY_PLAIN, 3,
+                (255, 255, 255), 3
+            )
 
     c_time = time.time()
     fps = 1 / (c_time - p_time)
