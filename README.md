@@ -30,6 +30,11 @@
 ## Description
 Created Fitness Trainer using OpenCV and Mediapipe in python
 
+## Demo Video
+
+https://user-images.githubusercontent.com/88816150/163796274-b4ac8bc3-3303-401e-907a-a87b4e88b063.mp4
+
+
 ## Requirements
 #### Programming Language
 * Python3 (pyCharm)
@@ -47,6 +52,7 @@ Created Fitness Trainer using OpenCV and Mediapipe in python
   * in front of your web-cam (Change Value in VideoCapture)
   * Run Videos in fitness videos folder (Default - 1st Video)
   * Download fintness videos and set path to videos in VideoCapture
+* To **Quit** - Press **Q-key**
 
 ## License
 [![CC0](http://seawisphunter.com/minibuffer/api/MIT-License-transparent.png)](https://github.com/naseemap47/FitnessTrainer-ComputerVision-python/blob/master/LICENSE)
