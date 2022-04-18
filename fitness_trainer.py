@@ -43,13 +43,8 @@ while True:
             # Percentage
             percent = np.interp(angle, (200, 330), (0, 100))
 
-            bar = np.interp(angle, (200, 330), (400, 150))
-            if bar > 0:
-                bar = bar
-            else:
-                bar = 400
-
             # Bar
+            bar = np.interp(angle, (200, 330), (400, 150))
             cv2.rectangle(img, (20, 150), (55, 400), (0, 255, 0), 3)
             cv2.rectangle(img, (20, int(bar)), (55, 400), (0, 255, 0), cv2.FILLED)
             cv2.putText(
@@ -61,11 +56,11 @@ while True:
             # Count
             if percent == 100:
                 if dir == 0:
-                    count += (1 / 2)
+                    count += 0.5
                     dir = 1
             if percent == 0:
                 if dir ==1:
-                    count += (1 / 2)
+                    count += 0.5
                     dir = 0
             # print(count)
 
